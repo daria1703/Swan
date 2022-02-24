@@ -63,16 +63,15 @@ router.delete('/:productId', async (req,res)=>{
 
 router.patch('/:productId',async (req,res)=>{
     try{
-        const updateedProduct = await Product.updateOne(
+        const updateedProduct = await Product.updateMany(
             {_id: req.params.productId},
-            {$set: {title: req.body.title}},
-            {$set: {description: req.body.description}},
-            {$set: {price: req.body.price}},
-            {$set: {matter: req.body.matter}},
-            {$set: {assay: req.body.assay}},
-            {$set: {size: req.body.size}},
-            {$set: {brand: req.body.brand}},
-            
+            {$set: {description: req.body.description,
+                    price: req.body.price,
+                    matter: req.body.matter,
+                    assay: req.body.assay,
+                    size: req.body.size,
+                    brand: req.body.brand
+            }},            
         );
         res.json(updateedProduct);
     } catch(err){
