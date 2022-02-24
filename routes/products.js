@@ -24,6 +24,7 @@ router.post('/', async (req, res)=>{
         matter: req.body.matter,
         assay: req.body.assay,
         size: req.body.size,
+        brand: req.body.brand
         // img: req.body.img,
     });
 
@@ -70,6 +71,7 @@ router.patch('/:productId',async (req,res)=>{
             {$set: {matter: req.body.matter}},
             {$set: {assay: req.body.assay}},
             {$set: {size: req.body.size}},
+            {$set: {brand: req.body.brand}},
             
         );
         res.json(updateedProduct);

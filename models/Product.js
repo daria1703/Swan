@@ -6,27 +6,39 @@ const ProductSchema = mongoose.Schema({
     title: {
         type: String,
         required: true,
+        default: "Przedmiot"
     },
     description: {
         type: String,
         required: true,
+        default: "Opis"
     },
     price:{
         type: Number,
         required: true,
+        default: 0
     },
     matter:{
         type: String,
         required: true,
+        default: "Materiał"
     },
     assay:{
         type: Number,
         require: true,
+        default: 0
     },
     size:{
         type: Number,
         require: true,
+        default: 0
     },
+    brand:{
+        type: String,
+        require: true,
+        default: 0
+    },
+
     // img:{
     //     type: Image,
     //     required: true,
