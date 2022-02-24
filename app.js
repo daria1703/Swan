@@ -10,9 +10,9 @@ app.use(cors());
 app.use(bodyParser.json())
 
 //Import Routes
-const postsRoute = require('./routes/posts');
+const productsRoute = require('./routes/products');
 
-app.use('/posts', postsRoute);
+app.use('/products', productsRoute);
 
 //Middlewares miejsce gdzie mozemy wstawić logikę gdy uzyskamy połacznie z wybraną przez nas częścia routingu, może to być np jakaś funkcja
 // np robi sie tu autoryzację użytkownika
@@ -30,9 +30,10 @@ app.get('/', (req, res)=>{
 
 //gdybyśmy chcieli przejsc podczas nawigacji do stronki /posts to piszemy to tak 
 
-app.get('/posts', (req, res)=>{
-    res.send('We are on posts'); 
+app.get('/products', (req, res)=>{
+    res.send('We are on products'); 
 });
+
 
 // Połącznie z bazą DB 
 
