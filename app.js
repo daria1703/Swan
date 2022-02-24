@@ -1,0 +1,45 @@
+const express = require('express');
+const app = express();
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+require('dotenv/config');
+
+// ta linijka upewiamy się że poszczególne częsci kodu działają 
+app.use(cors());
+app.use(bodyParser.json())
+
+//Import Routes
+const postsRoute = require('./routes/posts');
+
+app.use('/posts', postsRoute);
+
+//Middlewares miejsce gdzie mozemy wstawić logikę gdy uzyskamy połacznie z wybraną przez nas częścia routingu, może to być np jakaś funkcja
+// np robi sie tu autoryzację użytkownika
+
+// app.use('/posts',() => {
+//     console.log('This is a middlewear running');
+// });
+
+//ROUTES res = require, res = responde
+// get czyli wysłanie informacji na serwer
+
+app.get('/', (req, res)=>{
+    res.send('We are on home'); 
+});
+
+//gdybyśmy chcieli przejsc podczas nawigacji do stronki /posts to piszemy to tak 
+
+app.get('/posts', (req, res)=>{
+    res.send('We are on posts'); 
+});
+
+// Połącznie z bazą DB 
+
+mongoose.connect(
+    process.env.DB_CONNECTION, 
+    {useNewUrlParser: true}, 
+    () => console.log('connected to DB!'));
+
+//Port z jakiego api będzie nasłuchiwać
+app.listen(3000);
