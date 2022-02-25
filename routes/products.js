@@ -70,7 +70,10 @@ router.patch('/:productId',async (req,res)=>{
                     matter: req.body.matter,
                     assay: req.body.assay,
                     size: req.body.size,
-                    brand: req.body.brand
+                    brand: req.body.brand,
+                    sex: req.body.sex,
+                    img: req.body.img,
+                    quantity: req.body.quantity,
             }},            
         );
         res.json(updateedProduct);

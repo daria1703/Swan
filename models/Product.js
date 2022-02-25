@@ -38,11 +38,21 @@ const ProductSchema = mongoose.Schema({
         require: true,
         default: "Marka"
     },
-
-    // img:{
-    //     type: Image,
-    //     required: true,
-    // },
+    sex:{
+        type: String,
+        require: true,
+        default: "Płeć"
+    },
+    img:{
+        type: String,
+        required: true,
+        default: "https://www.parfois.com/dw/image/v2/BBKR_PRD/on/demandware.static/-/Sites-parfois-master-catalog/default/dw80180089/images/hi-res/212/52/183050_DM_1yf.jpg?sw=679&q=90"
+    },
+    quantity:{
+        type: Number,
+        require: true,
+        default: 0
+    },
     date: {
         type: Date,
         default: Date.now
