@@ -1,10 +1,10 @@
 import React from "react"; 
 import { View, Button , Text, TouchableOpacity, StyleSheet, ImageBackground} from 'react-native'
-import bgImage from 'zdj_splash.png';
+import image from '../zdj_splash.png';
 
 const Splash = () => {
     return (
-        <ImageBackground source={bgImage} style={styles.body}>
+        <ImageBackground source={image} style={styles.body}>
             <Text style={styles.text1}>THE SWAN</Text>
             <Text style={styles.text2}>HOUSE</Text>
             <Text style={styles.text3}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam pellentesque pretium pretium. Sed fermentum, felis vitae lacinia fauc.</Text>
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
       lineHeight: 30.47,
       letterSpacing: 1.5,
       fontSize: 24,
-      weight: 600,
+      // weight: 600,
       fontFamily: 'Gelasio-SemiBold',
       position: 'absolute',
       width: 200,
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
       lineHeight: 38,
       letterSpacing: 1.5,
       fontSize: 30,
-      weight: 700,
+      // weight: 700,
       fontFamily: 'Gelasio-SemiBold',
       position: 'absolute',
       width: 150,
@@ -64,11 +64,11 @@ const styles = StyleSheet.create({
       width: 286,
       height: 160,  
       left: 59,
-      style: 'normal',
+      // style: 'normal',
       top: 384,
       lineHeight: 35,
       fontFamily: 'NunitoSans-Regular',
-      weight: 400,
+      // weight: 400,
       fontSize: 18,
       marginTop: 30,
       textAlign: 'justify',
