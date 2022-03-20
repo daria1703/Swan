@@ -18,7 +18,7 @@ Gdy uzytkownik posiada już konto w serwisie to loguje się poprzez uzupełnieni
 ![Logowanie](https://user-images.githubusercontent.com/80101842/159140484-7df30c40-f3d9-4ad9-b9ff-475bf32bc5f7.png)
 
 ### Home
-Użytkownik, wchodząc na sklepu internetowego The Swan House ma możliwość zobaczenia najnowyszych ofert, najbardziej popularnych przedmiotów,okazjonalnych
+Użytkownik, wchodząc na sklepu internetowego The Swan House ma możliwość zobaczenia najnowyszych ofert, najbardziej popularnych przedmiotów, okazjonalnych
 koleckji biżuterii a także wyszukać produkt po marce, kolorze czy rozmiarze. Niezbędne informacje do realizacji tych funkcjonalności zostaną pobrane z specjalnie stworzonego przeze mnie na potrzeby projektu API. 
 
 <p align="center">
@@ -26,7 +26,7 @@ koleckji biżuterii a także wyszukać produkt po marce, kolorze czy rozmiarze. 
 </p>
 
 ### Podstrona produktów
-Gdy klient kliknie wybrany przez siebie link w nawbarze, zostanie przekierowany do strony produktów. Zostanie wyswietlona strona z lista spełniających warunek produktów. Użytkownik będzie miał możliwość przefiltrowania listy w celu znalezienia porządanego towaru.
+Gdy klient kliknie wybrany przez siebie link w nawbarze, zostanie przekierowany do strony produktów. Zostanie wyswietlona strona z listą spełniających warunek produktów. Użytkownik będzie miał możliwość przefiltrowania listy w celu znalezienia porządanego towaru.
 
 ![Strona produktów](https://user-images.githubusercontent.com/80101842/159140486-6a746e3d-24d1-428a-bbe1-67e8fb001338.png)
 
@@ -205,3 +205,28 @@ Ekran służący do personalizacji konta na przykład poprzez zmianę nazwy uzyt
 <p align="center">
    <img src="https://user-images.githubusercontent.com/80101842/159141225-08a70600-49b2-41af-a1b7-23fa6511ed9b.png">
 </p>
+
+**Funkcjonalności**
+- Logowanie/Rejestrowanie użytkownika
+- Dodawanie/Usuwanie produktu z koszyka
+- Zwiększanie/Zmniejszanie ilość produktów w koszyku
+- Możliwość komentowania/polubienia przedmiotu
+- Wyszukiwanie przedmiotu po nazwie
+- Wyświetlenie ostatnio dodanych produktów
+- Filtrowanie/Sortowanie po wadze/rozmiarze/marce
+- Dezaktywacja konta użytkownika
+- Zakup produktu
+
+**Poczynione kroki**
+- Stworzenie konceptu aplikacji
+- Stworzenie szablonu aplikacji
+- Inicjalizacja projektu i repozytorium
+- Stworzenie struktury aplikacji
+- Wykorzystanie react-native do stworzenia funkcjonalności aplikacji
+
+**Technologie**
+- REST API
+- React-Native
+- GIT
+- Figma
+- MongoDB
