@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { View, Button, Text, Image, StyleSheet, TouchableOpacity, TextInput } from 'react-native'
 import logo from '../logo.png'
 
-export default function Registration() {
-    const [email, setEmail] = useState('email@gmail.com');
-    const [password, setPassword] = useState('***');
+export default function Registration({ navigation }) {
+
     return (
         <View style={styles.body}>
             <View style={styles.logoview}>
@@ -30,23 +29,18 @@ export default function Registration() {
                 <TextInput style={styles.input} />
 
                 <TouchableOpacity style={styles.btn}
-                // onPress={() => navigation.navigate('Registration')} 
+                    onPress={() => navigation.navigate('Home')}
                 >
                     <Text style={styles.btntext}>Sign up</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.btn}
-                // onPress={() => navigation.navigate('Registration')} 
-                >
-                    <Text style={styles.btntext}>Sign up</Text>
-                </TouchableOpacity>
                 <View style={styles.alreadyAccountContainer}>
-                <Text style={styles.alreadyAccount}>Already have account?</Text>
-                <TouchableOpacity style={styles.btnSignIn}
-                // onPress={() => navigation.navigate('Registration')} 
-                >
-                    <Text style={styles.btntextSignIn}>SIGN IN</Text>
-                </TouchableOpacity>
+                    <Text style={styles.alreadyAccount}>Already have account?</Text>
+                    <TouchableOpacity style={styles.btnSignIn}
+                        onPress={() => navigation.navigate('Login')}
+                    >
+                        <Text style={styles.btntextSignIn}>SIGN IN</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         </View>
@@ -163,36 +157,21 @@ const styles = StyleSheet.create({
     },
 
 
-    btnSignIn:{
-        color: '#000000',
+    btnSignIn: {
         width: 70,
         height: 50,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        // width: 700,
-        fontWeight: 'bold',
         textAlign: 'center',
         top: 55,
         left: 215,
     },
 
-    // alreadyAccountContainer: {
-    //     display: 'flex',
-    //     alignItems: 'center',
-    //     justifyContent:'center'
-    // }
-
-    // btntextSignIn:{
-    //     color:'#242424',
-    //     width: 700,
-    //     fontWeight: 'bold',
-    //     textAlign: 'center',
-    //     top: 70,
-    //     right: 90
-    // }
+    btntextSignIn:{
+        fontWeight: 'bold',
+        color: '#000000',
+    }
 
 });
 
-
-// export default Login
