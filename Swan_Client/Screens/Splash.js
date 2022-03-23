@@ -2,6 +2,7 @@ import React from "react";
 import { View, Button , Text, TouchableOpacity, StyleSheet, ImageBackground} from 'react-native'
 import image from '../zdj_splash.png';
 import Login from "./Login";
+import Registration from "./Registration";
 
 const Splash = ({navigation}) => {
   

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {View, Button, Text, Image, StyleSheet,TouchableOpacity, TextInput} from 'react-native'
 import logo from '../logo.png'
 
-export default function Login(){
+export default function Login({navigation}){
     const [email, setEmail] = useState('email@gmail.com');
     const [password, setPassword] = useState('***');
     return(
@@ -24,7 +24,7 @@ export default function Login(){
                 <TextInput style={styles.input} />
                 <Text style={styles.forgottPass}>Forgot Password</Text>
                 <TouchableOpacity style={styles.btn} 
-                // onPress={() => navigation.navigate('Login')} 
+                onPress={() => navigation.navigate('Registration')} 
                 >
                 <Text style={styles.btntext}>Log in</Text>
                 </TouchableOpacity>
