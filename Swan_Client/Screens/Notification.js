@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { View, Button, Text, Image, StyleSheet, TouchableOpacity, TextInput } from 'react-native'
 import logo from '../logo.png'
 
-export default function Home(){
+export default function Notification(){
 
     return (
         <View style={styles.body}>
-            <Text>Home</Text>
+            <Text>Notification</Text>
         </View>
     )
 }
