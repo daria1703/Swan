@@ -12,7 +12,7 @@ router.get('/', async (req, res) =>{
         const users = await User.find();
         res.json(users);
     }catch(err){
-       res.json({message: err}); 
+       res.json({message: err});
     }
 });
 
@@ -41,7 +41,7 @@ router.post('/', async (req, res)=>{
 
 router.get('/:userId', async (req, res)=>{
     try{
-    const user = await User.findById(req.params.usertId)
+    const user = await User.findById(req.params.userId)
     res.json(user)
     } catch(err){
         res.json({message: err});
@@ -53,7 +53,7 @@ router.get('/:userId', async (req, res)=>{
 router.delete('/:userId', async (req,res)=>{
     try{
     const removeUser =  await User.remove({_id: req.params.userId});
-    res.json(removeUser);    
+    res.json(removeUser);
     } catch(err){
         res.json({message: err});
     }
@@ -71,7 +71,7 @@ router.patch('/:userId',async (req,res)=>{
                     password: req.body.password,
                     sex: req.body.sex,
                     img: req.body.img,
-            }},            
+            }},
         );
         res.json(updateedProduct);
     } catch(err){
