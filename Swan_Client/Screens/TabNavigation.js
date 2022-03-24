@@ -17,8 +17,8 @@ const TabNavigation = () => {
 
     return (
         <Tab.Navigator
-            tabBarOptions={{
-                showLabel: false,
+        screenOptions={{
+            tabBarShowLabel: false,
                 style: {
                     position: 'absolute',
                     height: 70,
