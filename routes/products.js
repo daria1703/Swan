@@ -24,8 +24,9 @@ router.post('/', async (req, res)=>{
         matter: req.body.matter,
         assay: req.body.assay,
         size: req.body.size,
-        brand: req.body.brand
-        // img: req.body.img,
+        brand: req.body.brand,
+        category: req.body.category,
+        // img: req.body.img
     });
 
 // zapisywanie w bazie danych
@@ -74,6 +75,7 @@ router.patch('/:productId',async (req,res)=>{
                     sex: req.body.sex,
                     img: req.body.img,
                     quantity: req.body.quantity,
+                    category: req.body.category,
             }},            
         );
         res.json(updateedProduct);
