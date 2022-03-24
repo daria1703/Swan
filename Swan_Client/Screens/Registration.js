@@ -29,7 +29,7 @@ export default function Registration({ navigation }) {
                 <TextInput style={styles.input} />
 
                 <TouchableOpacity style={styles.btn}
-                    onPress={() => navigation.navigate('Home')}
+                    onPress={() => navigation.navigate('TabNavigation')}
                 >
                     <Text style={styles.btntext}>Sign up</Text>
                 </TouchableOpacity>
