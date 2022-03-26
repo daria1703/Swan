@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, ImageBackground, View, FlatList, ScrollView, SafeAreaView, TouchableOpacity, Image } from 'react-native';
 import image from '../assets/img/n1.jpg';
 
-export default function Home() {
+
+export default function Home({navigation}) {
     const [choice, setChoice] = useState([
         { name: 'Popular', id: '1', img: require('../assets/img/star.png') },
         { name: 'Rings', id: '2', img: require('../assets/img/ring.png') },
@@ -13,16 +14,15 @@ export default function Home() {
 
     return (
         <View style={styles.body}>
-
             <View style={styles.serchAndeTC}>
-                <TouchableOpacity>
-                    <Image style={styles.icon} source={require('../assets/img/serch.png')} />
+                <TouchableOpacity onPress={() => navigation.navigate('Search')}>
+                    <Image style={styles.icon} source={require('../assets/img/serch.png')}/>
                 </TouchableOpacity>
                 <View style={styles.title}>
                     <Text style={styles.textSwan}>THE SWAN</Text>
                     <Text style={styles.textHouse}>HOUSE</Text>
                 </View>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
                     <Image style={styles.icon} source={require('../assets/img/bag.png')} />
                 </TouchableOpacity>
             </View>
@@ -55,9 +55,9 @@ export default function Home() {
                     keyExtractor={(item) => item.id}
                     data={choice}
                     renderItem={({ item }) => (
-                        <TouchableOpacity style={styles.productCard}>
+                        <TouchableOpacity style={styles.productCard} onPress={() => navigation.navigate('Product')}>
                         <ImageBackground source={image} resizeMode="cover" style={styles.image}>
-                            <TouchableOpacity style={styles.iconBox2}>
+                            <TouchableOpacity style={styles.iconBox2} onPress={() => navigation.navigate('Cart')}>
                                 <Image
                                     style={styles.icon3}
                                     source={require('../assets/img/shopping-bag.png')}
