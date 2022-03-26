@@ -36,10 +36,10 @@ app.get('/products', (req, res)=>{
     res.send('We are on products'); 
 });
 
+
 app.get('/users', (req, res)=>{
     res.send('We are on users'); 
 });
-
 
 // Połącznie z bazą DB 
 
