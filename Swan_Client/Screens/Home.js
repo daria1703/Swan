@@ -1,14 +1,19 @@
-import React, { useState } from "react";
-import { View, Button, Text, Image, StyleSheet, TouchableOpacity, TextInput } from 'react-native'
-import { FlatList } from "react-native-gesture-handler";
-import logo from '../logo.png'
-import Box from '../Components/Box'
-import { SafeAreaView } from "react-native-safe-area-context";
+import React, { useState } from 'react';
+import { StyleSheet, Text, ImageBackground, View, FlatList, ScrollView, SafeAreaView, TouchableOpacity, Image } from 'react-native';
+import image from '../assets/img/n1.jpg';
 
 export default function Home() {
+    const [choice, setChoice] = useState([
+        { name: 'Popular', id: '1', img: require('../assets/img/star.png') },
+        { name: 'Rings', id: '2', img: require('../assets/img/ring.png') },
+        { name: 'Bracelets', id: '3', img: require('../assets/img/bracelet.png') },
+        { name: 'Necklaces', id: '4', img: require('../assets/img/necklace.png') },
+        { name: 'Earrings', id: '5', img: require('../assets/img/earring.png') },
+    ]);
 
     return (
         <View style={styles.body}>
+
             <View style={styles.serchAndeTC}>
                 <TouchableOpacity>
                     <Image style={styles.icon} source={require('../assets/img/serch.png')} />
@@ -21,57 +26,53 @@ export default function Home() {
                     <Image style={styles.icon} source={require('../assets/img/bag.png')} />
                 </TouchableOpacity>
             </View>
-
-            <View style={styles.rowChoice}>
-                <View style={styles.choiceBox}>
-                    <TouchableOpacity style={styles.iconBox}>
-                        <Image
-                            style={styles.icon2}
-                            source={require('../assets/img/star.png')}
-                        />
-                    </TouchableOpacity>
-                    <Text style={styles.iconText}>Popular</Text>
-                </View>
-                <View style={styles.choiceBox}>
-                    <TouchableOpacity style={styles.iconBox}>
-                        <Image
-                            style={styles.icon2}
-                            source={require('../assets/img/ring.png')}
-                        />
-                    </TouchableOpacity>
-                    <Text style={styles.iconText}>Rings</Text>
-                </View>
-                <View style={styles.choiceBox}>
-                    <TouchableOpacity style={styles.iconBox}>
-                        <Image
-                            style={styles.icon2}
-                            source={require('../assets/img/bracelet.png')}
-                        />
-                    </TouchableOpacity>
-                    <Text style={styles.iconText}>Bracelet</Text>
-                </View>
-                <View style={styles.choiceBox}>
-                    <TouchableOpacity style={styles.iconBox}>
-                        <Image
-                            style={styles.icon2}
-                            source={require('../assets/img/necklace.png')}
-                        />
-                    </TouchableOpacity>
-                    <Text style={styles.iconText}>Necklaces</Text>
-                </View>
-                <View style={styles.choiceBox}>
-                    <TouchableOpacity style={styles.iconBox}>
-                        <Image
-                            style={styles.icon2}
-                            source={require('../assets/img/earring.png')}
-                        />
-                    </TouchableOpacity>
-                    <Text style={styles.iconText}>Earrings</Text>
-                </View>
+            <View>
+                <FlatList 
+                    numColumns={5}
+                    style={styles.flatListChoice}
+                    keyExtractor={(item) => item.id}
+                    data={choice}
+                    renderItem={({ item }) => (
+                        <View style={styles.rowChoice}>
+                            <View style={styles.choiceBox}>
+                                <TouchableOpacity style={styles.iconBox}>
+                                    <Image
+                                        style={styles.icon2}
+                                        source={item.img}
+                                    />
+                                </TouchableOpacity>
+                                <Text style={styles.iconText}>{item.name}</Text>
+                            </View>
+                        </View>
+                    )}
+                />
             </View>
-
+            <SafeAreaView style={styles.productListContainer}>
+                <ScrollView style={styles.productList}>
+                <FlatList
+                    numColumns={2}
+                    style={styles.productList}
+                    keyExtractor={(item) => item.id}
+                    data={choice}
+                    renderItem={({ item }) => (
+                        <TouchableOpacity style={styles.productCard}>
+                        <ImageBackground source={image} resizeMode="cover" style={styles.image}>
+                            <TouchableOpacity style={styles.iconBox2}>
+                                <Image
+                                    style={styles.icon3}
+                                    source={require('../assets/img/shopping-bag.png')}
+                                />
+                            </TouchableOpacity>
+                            <Text style={styles.textCardTttle}>Necklace</Text>
+                            <Text style={styles.textCardPrice}>$ 125.00</Text>
+                        </ImageBackground>
+                    </TouchableOpacity>
+                    )}
+                />  
+                </ScrollView>
+            </SafeAreaView>
         </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
@@ -90,15 +91,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: 130,
-        backgroundColor: 'yellow'
+        // backgroundColor: 'yellow'
 
     },
 
     rowChoice: {
-        // backgroundColor: 'blue',
-        flexDirection:'row',
+        flexDirection: 'row',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     },
 
     textSwan: {
@@ -117,22 +117,23 @@ const styles = StyleSheet.create({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        backgroundColor: 'green',
+        // backgroundColor: 'green',
         marginTop: 40,
+        marginBottom: 10,
         height: 60,
         flexDirection: 'row',
 
     },
 
     icon: {
-        width: 40,
-        height: 40,
-        margin: 20
+        width: 30,
+        height: 30,
+        margin: 30,
     },
 
     icon2: {
-        width: 30,
-        height: 30,
+        width: 25,
+        height: 25,
     },
 
     iconBox: {
@@ -141,7 +142,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#F5F5F5',
         borderRadius: 12,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
 
     iconText: {
@@ -158,8 +159,67 @@ const styles = StyleSheet.create({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-       
     },
 
+    flatListChoice: {
+        // backgroundColor: 'yellow',
+        marginBottom: 10,
+        height: 80
+    },
 
+    productCard: {
+        width: 170,
+        height: 270,
+        // backgroundColor: 'purple',
+        marginTop: 20,
+        marginLeft: 20,
+        marginRight: 10
+    },
+    productList: {
+        width: '100%',
+        height: '100%',
+        // backgroundColor: 'yellow',
+        
+    },
+    // productListContainer:{
+    //     height: '100',
+    //     width: '100%',
+    //     backgroundColor: 'red',
+    // },
+    image: {
+        height: 270,
+        width: 170
+    },
+    iconBox2: {
+        width: 35,
+        height: 35,
+        marginLeft: 125,
+        marginTop: 180,
+        backgroundColor: '#DCDCDC',
+        borderRadius: 12,
+        display:'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+
+    icon3: {
+        width: 20,
+        height: 20,
+    },
+
+    textCardTttle:{
+        marginTop: 10,
+        fontFamily: 'NunitoSans-Regular',
+        lineHeight: 19,
+        fontSize: 14,
+        color: '#606060'
+    },
+    textCardPrice:{
+        fontFamily: 'NunitoSans-Regular',
+        lineHeight: 19,
+        fontSize: 14,
+        fontWeight: '700',
+        fontStyle:'normal',
+        color: '#303030'
+    },
 });
