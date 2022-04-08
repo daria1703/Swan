@@ -12,7 +12,6 @@ import {
     Image,
     ActivityIndicator,
 } from 'react-native';
-import image from '../assets/img/n1.jpg';
 
 
 export default function Home({navigation}) {
@@ -41,8 +40,6 @@ export default function Home({navigation}) {
     useEffect(() => {
         getProducts();
     }, []);
-
-    const asd = {uri: 'https://pl.pandora.net/dw/image/v2/AAKS_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dwef7390e9/images/productimages/main/569046C01_RGB.JPG?sw=1000&sh=1000&sm=fit&sfrm=png&bgcolor=F5F5F5'};
 
     return (
         <View style={styles.body}>
