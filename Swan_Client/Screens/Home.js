@@ -1,6 +1,17 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, ImageBackground, View, FlatList, ScrollView, SafeAreaView, TouchableOpacity, Image } from 'react-native';
-import image from '../assets/img/n1.jpg';
+/* eslint-disable */
+import React, {useEffect, useState} from 'react';
+import {
+    StyleSheet,
+    Text,
+    ImageBackground,
+    View,
+    FlatList,
+    ScrollView,
+    SafeAreaView,
+    TouchableOpacity,
+    Image,
+    ActivityIndicator,
+} from 'react-native';
 
 
 export default function Home({navigation}) {
@@ -11,6 +22,24 @@ export default function Home({navigation}) {
         { name: 'Necklaces', id: '4', img: require('../assets/img/necklace.png') },
         { name: 'Earrings', id: '5', img: require('../assets/img/earring.png') },
     ]);
+
+    const [isLoading, setLoading] = useState(true);
+    const [data, setData] = useState([]);
+    const getProducts = async () => {
+        try {
+            const response = await fetch('https://swan-server.herokuapp.com/products');
+            const json = await response.json();
+            setData(json);
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        getProducts();
+    }, []);
 
     return (
         <View style={styles.body}>
@@ -27,7 +56,7 @@ export default function Home({navigation}) {
                 </TouchableOpacity>
             </View>
             <View>
-                <FlatList 
+                <FlatList
                     numColumns={5}
                     style={styles.flatListChoice}
                     keyExtractor={(item) => item.id}
@@ -49,26 +78,27 @@ export default function Home({navigation}) {
             </View>
             <SafeAreaView style={styles.productListContainer}>
                 <ScrollView style={styles.productList}>
-                <FlatList
-                    numColumns={2}
-                    style={styles.productList}
-                    keyExtractor={(item) => item.id}
-                    data={choice}
-                    renderItem={({ item }) => (
-                        <TouchableOpacity style={styles.productCard} onPress={() => navigation.navigate('Product')}>
-                        <ImageBackground source={image} resizeMode="cover" style={styles.image}>
-                            <TouchableOpacity style={styles.iconBox2} onPress={() => navigation.navigate('Cart')}>
-                                <Image
-                                    style={styles.icon3}
-                                    source={require('../assets/img/shopping-bag.png')}
-                                />
+                    {isLoading ? <ActivityIndicator/> : (
+                        <FlatList
+                            numColumns={2}
+                            style={styles.productList}
+                            keyExtractor={(item) => item.id}
+                            data={data}
+                            renderItem={({ item }) => (
+                                <TouchableOpacity style={styles.productCard} onPress={() => navigation.navigate('Product')}>
+                                <ImageBackground source={{uri: item.img}} resizeMode="cover" style={styles.image}>
+                                    <TouchableOpacity style={styles.iconBox2} onPress={() => navigation.navigate('Cart')}>
+                                        <Image
+                                            style={styles.icon3}
+                                            source={require('../assets/img/shopping-bag.png')}
+                                        />
+                                    </TouchableOpacity>
+                                    <Text style={styles.textCardTttle}>{item.title}</Text>
+                                    <Text style={styles.textCardPrice}>$ {item.price}</Text>
+                                </ImageBackground>
                             </TouchableOpacity>
-                            <Text style={styles.textCardTttle}>Necklace</Text>
-                            <Text style={styles.textCardPrice}>$ 125.00</Text>
-                        </ImageBackground>
-                    </TouchableOpacity>
-                    )}
-                />  
+                            )}
+                        />)}
                 </ScrollView>
             </SafeAreaView>
         </View>
@@ -179,7 +209,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         // backgroundColor: 'yellow',
-        
+
     },
     // productListContainer:{
     //     height: '100',

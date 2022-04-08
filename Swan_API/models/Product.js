@@ -8,6 +8,11 @@ const ProductSchema = mongoose.Schema({
         required: true,
         default: "Przedmiot"
     },
+    category: {
+        type: String,
+        required: true,
+        default: "Przedmiot"
+    },
     description: {
         type: String,
         required: true,

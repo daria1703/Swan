@@ -11,8 +11,10 @@ app.use(bodyParser.json())
 
 //Import Routes
 const productsRoute = require('./routes/products');
+const usersRoute = require('./routes/users');
 
 app.use('/products', productsRoute);
+app.use('/users', usersRoute);
 
 //Middlewares miejsce gdzie mozemy wstawić logikę gdy uzyskamy połacznie z wybraną przez nas częścia routingu, może to być np jakaś funkcja
 // np robi sie tu autoryzację użytkownika
@@ -34,6 +36,10 @@ app.get('/products', (req, res)=>{
     res.send('We are on products'); 
 });
 
+
+app.get('/users', (req, res)=>{
+    res.send('We are on users'); 
+});
 
 // Połącznie z bazą DB 
 
