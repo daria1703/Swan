@@ -1,21 +1,50 @@
-import React, { useState } from "react";
-import { View, Button, Text, Image, StyleSheet, SafeAreaView, TouchableOpacity, TextInput, ScrollView } from 'react-native'
-import logo from '../logo.png'
-import img from '../assets/img/n1.jpg';
+/* eslint-disable */
+import React, {useEffect, useState} from 'react';
+import {
+    View,
+    Text,
+    Image,
+    StyleSheet,
+    SafeAreaView,
+    TouchableOpacity,
+    ScrollView,
+    ActivityIndicator,
+} from 'react-native';
 
-export default function Product({ navigation }) {
+export default function Product({ route, navigation }) {
+
+    const itemId = route.params.item;
+    const [item, setItem] = useState({});
+    const [isLoading, setLoading] = useState(true);
+
+    const getProduct = async () => {
+        try {
+            const response = await fetch('https://swan-server.herokuapp.com/products/details/' + itemId);
+            const json = await response.json();
+            setItem(json);
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        getProduct();
+    }, []);
 
     return (
         <SafeAreaView style={styles.body}>
+            {isLoading ? <ActivityIndicator/> : (
             <ScrollView>
             <TouchableOpacity style={styles.boxIcon} onPress={() => navigation.navigate('Home')}>
                 <Image style={styles.icon} source={require('../assets/img/left-arrow.png')} />
             </TouchableOpacity>
-            <Image style={styles.img} source={img} />
-            <Text style={styles.titleText}>Necklace</Text>
+            <Image style={styles.img} source={{uri: item.img}} />
+            <Text style={styles.titleText}>{item.title}</Text>
 
             <View style={styles.priceAndCouterContainer}>
-                <Text style={styles.priceText}>$ 400.00</Text>
+                <Text style={styles.priceText}>$ {item.price}</Text>
                 <View style={styles.counter}>
                     <TouchableOpacity style={styles.iconBox2}>
                         <Image
@@ -23,7 +52,7 @@ export default function Product({ navigation }) {
                             source={require('../assets/img/add.png')}
                         />
                     </TouchableOpacity>
-                    <Text style={styles.textCounter}>0.1</Text>
+                    <Text style={styles.textCounter}>1</Text>
                     <TouchableOpacity style={styles.iconBox2}>
                         <Image
                             style={styles.icon2}
@@ -40,15 +69,11 @@ export default function Product({ navigation }) {
                         source={require('../assets/img/star.png')}
                     />
                 </TouchableOpacity>
-                <Text style={styles.textRate}>4.5</Text>
-                <Text style={styles.textReview}>(50 review)</Text>
+                <Text style={styles.textRate}>{item.rating}</Text>
+                <Text style={styles.textReview}>({item.ratingCount} review)</Text>
             </View>
 
-            <Text style={styles.description}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dapibus lorem non nisl dictum, interdum hendrerit ligula tincidunt. Duis ornare dignissim metus, suscipit vehicula neque tristique vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dapibus lorem non nisl dictum, interdum hendrerit ligula tincidunt. Duis ornare dignissim metus, suscipit vehicula neque tristique vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dapibus lorem non nisl dictum, interdum hendrerit ligula tincidunt. Duis ornare dignissim metus, suscipit vehicula neque tristique vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </Text>
+            <Text style={styles.description}>Opis</Text>
 
             <View style={styles.buttonsContainer}>
             <TouchableOpacity style={styles.iconBox4} onPress={() => navigation.navigate('Favourite')}>
@@ -62,6 +87,7 @@ export default function Product({ navigation }) {
                 </TouchableOpacity>
             </View>
             </ScrollView>
+                )}
         </SafeAreaView >
     )
 }

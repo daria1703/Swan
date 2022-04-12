@@ -28,6 +28,7 @@ export default function Home({navigation}) {
     const getProducts = async () => {
         try {
             const response = await fetch('https://swan-server.herokuapp.com/products');
+            //const response = await fetch('http://localhost:3000/products');
             const json = await response.json();
             setData(json);
         } catch (error) {
@@ -85,7 +86,7 @@ export default function Home({navigation}) {
                             keyExtractor={(item) => item.id}
                             data={data}
                             renderItem={({ item }) => (
-                                <TouchableOpacity style={styles.productCard} onPress={() => navigation.navigate('Product')}>
+                                <TouchableOpacity style={styles.productCard} onPress={() => navigation.navigate('Product', {item: item._id})}>
                                 <ImageBackground source={{uri: item.img}} resizeMode="cover" style={styles.image}>
                                     <TouchableOpacity style={styles.iconBox2} onPress={() => navigation.navigate('Cart')}>
                                         <Image
