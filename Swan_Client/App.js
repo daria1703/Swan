@@ -7,6 +7,7 @@ import TabNavigation from './Screens/TabNavigation';
 import Search from './Screens/Search'
 import Cart from "./Screens/Cart";
 import Product from "./Screens/Product";
+import LogOut from "./Screens/LogOut"
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -26,6 +27,7 @@ function App() {
         <Stack.Screen name="Search" component={Search} options={{ headerShown: false }} />
         <Stack.Screen name="Cart" component={Cart} options={{ headerShown: false }} />
         <Stack.Screen name="Product" component={Product} options={{ headerShown: false }} />
+        <Stack.Screen name="LogOut" component={LogOut} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -97,13 +97,13 @@ export default function Cart({ navigation }) {
                             </Text>
                         </View>
                     </View>
-                    
+
                     <View style={styles.btnContainer}>
-                    <TouchableOpacity style={styles.btn}>
-                        <Text style={styles.btntext}>Check out</Text>
-                    </TouchableOpacity>
+                        <TouchableOpacity style={styles.btn}>
+                            <Text style={styles.btntext}>Check out</Text>
+                        </TouchableOpacity>
                     </View>
-                    
+
                     <View style={styles.saveContainer}>
                     </View>
                 </ScrollView>
@@ -332,12 +332,12 @@ const styles = StyleSheet.create({
         height: 60,
         width: 300,
         backgroundColor: '#013946',
-        display:'flex',
+        display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 4,
         // position: 'absolute',
-        
+
     },
 
     btntext: {
@@ -345,8 +345,8 @@ const styles = StyleSheet.create({
         fontFamily: 'NunitoSans-Regular',
         fontSize: 18,
     },
-    btnContainer:{
-        isplay:'flex',
+    btnContainer: {
+        isplay: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         marginBottom: 20
