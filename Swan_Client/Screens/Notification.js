@@ -4,21 +4,21 @@ import { back } from "react-native/Libraries/Animated/Easing";
 import logo from '../logo.png'
 
 export default function Notification({navigation}){
+// to pasuje wrzucić do bazy danych chyba?
+const [notification, setProduct] = useState([
+    { id: '1', image: require('../assets/img/b1.jpg'), title: 'Your order #123456789 has been confirmed', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis pretium et in arcu adipiscing nec. Turpis pretium et in arcu adipiscing nec.', lable: 'New', name:'confirmed'},
+    { id: '2', image: require('../assets/img/r1.jpg'), title: 'Your order #123456789 has been canceled', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis pretium et in arcu adipiscing nec. Turpis pretium et in arcu adipiscing nec.', lable: null, name:'canceled'},
+    { id: '3', image: require('../assets/img/n1.jpg'), title: 'Discover hot sale jewelery this week', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis pretium et in arcu adipiscing nec. Turpis pretium et in arcu adipiscing nec.', lable: 'HOT!', name:'success'},
+    { id: '4', image: require('../assets/img/e1.jpg'), title: 'Your order #123456789 has been shipped successfully', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis pretium et in arcu adipiscing nec. Turpis pretium et in arcu adipiscing nec.', lable: null, name:'canceled'},
+    { id: '5', image: require('../assets/img/b1.jpg'), title: 'Your order #123456789 has been confirmed', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis pretium et in arcu adipiscing nec. Turpis pretium et in arcu adipiscing nec.', lable: 'New', name:'confirmed' },
+    { id: '6', image: require('../assets/img/r1.jpg'), title: 'Your order #123456789 has been canceled', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis pretium et in arcu adipiscing nec. Turpis pretium et in arcu adipiscing nec.', lable: null, name:'canceled'},
+    { id: '7', image: require('../assets/img/n1.jpg'), title: 'Your order #123456789 has been shipped successfully', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis pretium et in arcu adipiscing nec. Turpis pretium et in arcu adipiscing nec.', lable: 'HOT!', name:'success'},
+    { id: '8', image: require('../assets/img/e1.jpg'), title: 'Your order #123456789 has been confirmed', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis pretium et in arcu adipiscing nec. Turpis pretium et in arcu adipiscing nec.', lable: 'New', name:'confirmed'},
+    { id: '9', image: require('../assets/img/b1.jpg'), title: 'Your order #123456789 has been canceled', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis pretium et in arcu adipiscing nec. Turpis pretium et in arcu adipiscing nec.', lable: null, name:'canceled'},
+    { id: '28', image: require('../assets/img/r1.jpg'), title: 'Your order #123456789 has been shipped successfully', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis pretium et in arcu adipiscing nec. Turpis pretium et in arcu adipiscing nec.', lable: 'HOT!', name:'success'},
+    { id: '90', image: require('../assets/img/n1.jpg'), title: 'Your order #123456789 has been confirmed', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis pretium et in arcu adipiscing nec. Turpis pretium et in arcu adipiscing nec.', lable: 'New', name:'confirmed'},
 
-    const [notification, setProduct] = useState([
-        { id: '1', image: require('../assets/img/b1.jpg'), title: 'Your order #123456789 has been confirmed', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis pretium et in arcu adipiscing nec. Turpis pretium et in arcu adipiscing nec.', lable: 'New', name:'success'},
-        { id: '2', image: require('../assets/img/r1.jpg'), title: 'Your order #123456789 has been canceled', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis pretium et in arcu adipiscing nec. Turpis pretium et in arcu adipiscing nec.', lable: null, name:'canceled'},
-        { id: '3', image: require('../assets/img/n1.jpg'), title: 'Discover hot sale jewelery this week', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis pretium et in arcu adipiscing nec. Turpis pretium et in arcu adipiscing nec.', lable: 'HOT!', name:'success'},
-        { id: '4', image: require('../assets/img/e1.jpg'), title: 'Your order #123456789 has been shipped successfully', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis pretium et in arcu adipiscing nec. Turpis pretium et in arcu adipiscing nec.', lable: null, name:'canceled'},
-        { id: '5', image: require('../assets/img/b1.jpg'), title: 'Your order #123456789 has been confirmed', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis pretium et in arcu adipiscing nec. Turpis pretium et in arcu adipiscing nec.', lable: 'New', name:'success' },
-        { id: '6', image: require('../assets/img/r1.jpg'), title: 'Your order #123456789 has been canceled', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis pretium et in arcu adipiscing nec. Turpis pretium et in arcu adipiscing nec.', lable: 'HOT!', name:'success'},
-        { id: '7', image: require('../assets/img/n1.jpg'), title: 'Your order #123456789 has been shipped successfully', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis pretium et in arcu adipiscing nec. Turpis pretium et in arcu adipiscing nec.', lable: 'New', name:'success'},
-        { id: '8', image: require('../assets/img/e1.jpg'), title: 'Your order #123456789 has been confirmed', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis pretium et in arcu adipiscing nec. Turpis pretium et in arcu adipiscing nec.', lable: null, name:'canceled'},
-        { id: '9', image: require('../assets/img/b1.jpg'), title: 'Your order #123456789 has been canceled', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis pretium et in arcu adipiscing nec. Turpis pretium et in arcu adipiscing nec.', lable: 'HOT!', name:'success'},
-        { id: '28', image: require('../assets/img/r1.jpg'), title: 'Your order #123456789 has been shipped successfully', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis pretium et in arcu adipiscing nec. Turpis pretium et in arcu adipiscing nec.', lable: 'New', name:'success'},
-        { id: '90', image: require('../assets/img/n1.jpg'), title: 'Your order #123456789 has been confirmed', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis pretium et in arcu adipiscing nec. Turpis pretium et in arcu adipiscing nec.', lable: null, name:'canceled'},
-
-    ]);
+]);
 
     return (
         <View style={styles.body}>
@@ -37,14 +37,17 @@ export default function Notification({navigation}){
                         data={notification}
                         renderItem={({ item }) => (
                             <View style={styles.cardContainer}>
-                <View style={styles.card}>
+                <View style={[
+                            styles.card,
+                            { backgroundColor: item.name == 'success' ? '#F5F5F5' : '#ffffff' }
+                          ]}>
                     <TouchableOpacity style={styles.imgBox} onPress={() => navigation.navigate('Product')}>
                         <Image
                             style={styles.img}
-                            source={require('../assets/img/b1.jpg')}
+                            source={item.image}
                         />
                     </TouchableOpacity>
-                    <View style={styles.notificationTextContainer}>
+                    <View>
                         <Text style={styles.notificationTitle}>{item.title}</Text>
                         <Text style={styles.description}>{item.description}</Text>
                         <Text style={[
