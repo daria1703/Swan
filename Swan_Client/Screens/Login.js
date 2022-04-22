@@ -24,7 +24,7 @@ export default function Login({navigation}) {
         <Text style={styles.textInput}>Email: </Text>
         <TextInput style={styles.input} />
         <Text style={styles.textInput}>Password: </Text>
-        <TextInput style={styles.input} />
+        <TextInput secureTextEntry={true} style={styles.input} />
         <Text style={styles.forgottPass}>Forgot Password?</Text>
 
         <TouchableOpacity
