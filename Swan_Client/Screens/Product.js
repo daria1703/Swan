@@ -18,7 +18,7 @@ export default function Product({route, navigation}) {
   const getProduct = async () => {
     try {
       const response = await fetch(
-        'https://swan-server.herokuapp.com/products/details/' + itemId,
+        'https://swan-server.herokuapp.com/products/' + itemId,
       );
       const json = await response.json();
       setItem(json);
@@ -80,7 +80,7 @@ export default function Product({route, navigation}) {
             <Text style={styles.textReview}>({item.ratingCount} review)</Text>
           </View>
 
-          <Text style={styles.description}>Opis</Text>
+          <Text style={styles.description}>{item.description}</Text>
 
           <View style={styles.buttonsContainer}>
             <TouchableOpacity
